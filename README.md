@@ -1,7 +1,6 @@
-# StellarGPTv2
-Technical Architecture Doc
-%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Arial', 'fontSize': '16px'}}}%%
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Arial', 'fontSize': '16px'}}}%%
+
 graph TD
     subgraph User
         ChatGPT[ChatGPT Interface]
@@ -28,7 +27,7 @@ graph TD
     ChatGPT --> |query| S2
     S1 --> |get & post| S4
     S2 --> |get & post| S4
-    S3 --> |sign & post| Freighter[Freighter Wallet (browser extension)]
+    S3 --> |sign & post| Freighter[Freighter Wallet]
     Browser --> |get| S4
     S4 --> |data| Browser
     S4 --> |write tx data| S1
@@ -46,4 +45,3 @@ graph TD
     %% Refreshing Flow
     Browser --> |fetch data| S4
     S4 --> |refresh data| VisComp
-```
