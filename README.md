@@ -1,6 +1,4 @@
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Arial', 'fontSize': '16px'}}}%%
-
 graph TD
     subgraph User
         ChatGPT[ChatGPT Interface]
