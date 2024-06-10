@@ -1,7 +1,7 @@
 # StellarGPTv2
 Technical Architecture Doc
 %%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Arial', 'fontSize': '16px'}}}%%
-
+```mermaid
 graph TD
     subgraph User
         ChatGPT[ChatGPT Interface]
@@ -46,3 +46,4 @@ graph TD
     %% Refreshing Flow
     Browser --> |fetch data| S4
     S4 --> |refresh data| VisComp
+```
