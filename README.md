@@ -1,7 +1,7 @@
 ```mermaid
 graph TD
     subgraph User
-        ChatGPT[ChatGPT Interface]
+        StellarGPT[StellarGPT Interface]
     end
 
     subgraph StellarGPT Server
