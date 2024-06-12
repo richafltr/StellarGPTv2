@@ -1,45 +1,42 @@
 ```mermaid
-graph TD
-    subgraph User
-        StellarGPT[StellarGPT Interface]
+sequenceDiagram
+    participant User
+    participant Browser
+    participant StellarGPT Interface
+    participant S1 [Stellar API Endpoints]
+    participant S2 [Soroban API Endpoints]
+    participant S3 [Signing Endpoints]
+    participant S4 [Database]
+    participant StellarHorizon [Stellar Horizon]
+    participant StellarExpert [Stellar Expert]
+    participant SorobanRPC [Soroban RPC]
+    participant Freighter [Freighter Wallet]
+    participant VisComp [Interactive Visualization Components]
+
+    User->>Browser: Access Interface
+    Browser->>StellarGPT Interface: Send Query
+    StellarGPT Interface->>S1: Query API
+    StellarGPT Interface->>S2: Query API
+    S1->>S4: Get & Post Data
+    S2->>S4: Get & Post Data
+    S3->>Freighter: Sign & Post Transactions
+    Browser->>S4: Fetch Data
+    S4->>Browser: Return Data
+    S4->>S1: Write Transaction Data
+    S4->>S2: Write Transaction Data
+    StellarHorizon->>S4: Get Data
+    StellarExpert->>S4: Get Data
+    SorobanRPC->>S4: Get Data
+
+    loop Visualization Flow
+        StellarGPT Interface->>VisComp: Generate Diagrams
+        VisComp->>Browser: Interactive Data
     end
 
-    subgraph StellarGPT Server
-        S1[Stellar API Endpoints]
-        S2[Soroban API Endpoints]
-        S3[Signing Endpoints]
-        S4[Database]
+    loop Refreshing Flow
+        Browser->>S4: Fetch Data
+        S4->>VisComp: Refresh Data
     end
 
-    subgraph Stellar
-        StellarHorizon[Stellar Horizon]
-        StellarExpert[Stellar Expert]
-        SorobanRPC[Soroban RPC]
-    end
 
-    subgraph Client
-        Browser[User Browser]
-    end
-
-    ChatGPT --> |query| S1
-    ChatGPT --> |query| S2
-    S1 --> |get & post| S4
-    S2 --> |get & post| S4
-    S3 --> |sign & post| Freighter[Freighter Wallet]
-    Browser --> |get| S4
-    S4 --> |data| Browser
-    S4 --> |write tx data| S1
-    S4 --> |write tx data| S2
-    StellarHorizon --> |get| S4
-    StellarExpert --> |get| S4
-    SorobanRPC --> |get| S4
-
-    %% Visualization Flow
-    subgraph Visualization
-        ChatGPT --> |generate diagrams| VisComp[Interactive Visualization Components]
-        VisComp --> |interactive data| Browser
-    end
-
-    %% Refreshing Flow
-    Browser --> |fetch data| S4
-    S4 --> |refresh data| VisComp
+```
