@@ -5,6 +5,26 @@ StellarGPT v2.0 is an advanced AI-powered tool designed to enable users and deve
 
 #### Detailed Technical Architecture
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant StellarGPT Interface
+    participant S4 [Database]
+    participant S1 [Stellar API Endpoints]
+
+    User->>Browser: Access Interface
+    Browser->>StellarGPT Interface: Send Query
+    StellarGPT Interface->>S1: Query API
+    S1->>S4: Get & Post Data
+    Browser->>S4: Fetch Data
+    S4->>Browser: Return Data
+
+    loop Visualization Flow
+        StellarGPT Interface->>Browser: Generate Diagrams
+    end
+
+```
 ##### Components Overview
 1. **LLM (Large Language Model) Integration**
 2. **StellarGPT Interface**
@@ -169,23 +189,4 @@ export default VisualizationComponent;
 ### Conclusion
 StellarGPT v2.0 integrates advanced NLP capabilities with real-time on-chain data from Stellar and Soroban to generate interactive visualizations, facilitating easier data interaction for developers, analysts, and business stakeholders. By leveraging the power of AI and robust API integrations, StellarGPT v2.0 enhances productivity and usability within the Stellar ecosystem.
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Browser
-    participant StellarGPT Interface
-    participant S4 [Database]
-    participant S1 [Stellar API Endpoints]
 
-    User->>Browser: Access Interface
-    Browser->>StellarGPT Interface: Send Query
-    StellarGPT Interface->>S1: Query API
-    S1->>S4: Get & Post Data
-    Browser->>S4: Fetch Data
-    S4->>Browser: Return Data
-
-    loop Visualization Flow
-        StellarGPT Interface->>Browser: Generate Diagrams
-    end
-
-```
